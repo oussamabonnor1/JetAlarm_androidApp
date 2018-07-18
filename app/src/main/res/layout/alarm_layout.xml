@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/button_style"
+    android:padding="15dp"
+    android:orientation="horizontal"
+    android:weightSum="1">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight=".4"
+        android:weightSum="1"
+        >
+
+        <TextView
+            android:id="@+id/timeText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:textColor="@color/colorAccent"
+            android:textSize="25dp"
+            android:text="08:00"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/weekText"
+            android:textColor="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:text="S S M T W T F"
+            android:gravity="center|top"/>
+    </LinearLayout>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".3"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight=".3">
+
+        <Switch
+            android:id="@+id/switchID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:checked="false" />
+    </LinearLayout>
+</LinearLayout>
