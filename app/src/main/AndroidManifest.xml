@@ -25,6 +25,8 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".AlarmSettingActivity"></activity>
+
+        <receiver android:name=".AlarmBroadcastReceiver"/>
     </application>
 
 </manifest>
