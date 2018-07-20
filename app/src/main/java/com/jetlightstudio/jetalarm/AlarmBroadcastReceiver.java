@@ -7,7 +7,6 @@ import android.content.Intent;
 public class AlarmBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        System.out.println(intent.getStringExtra("time"));
         Intent i = new Intent(context, RingtoneService.class);
         context.startService(i);
     }

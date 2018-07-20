@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -37,6 +38,22 @@ public class AlarmSettingActivity extends AppCompatActivity {
         intent.putExtra("time",time);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),pendingIntent);
+
+        Toast.makeText(getApplicationContext(), "Alarm will start in " + estimatedTime(calendar), Toast.LENGTH_SHORT).show();
+    }
+
+    String estimatedTime(Calendar calendar){
+        long estimatedTimeLong = calendar.getTimeInMillis() - System.currentTimeMillis();
+        estimatedTimeLong /= 60000;
+        estimatedTimeLong++;
+        int hours = Integer.valueOf(String.format("%02d", estimatedTimeLong/60));
+        int minutes = Integer.valueOf(String.format("%02d", estimatedTimeLong%60));
+        if(minutes < 0){
+            int newMinutes = (24 * 60) + minutes + 3;
+            minutes = newMinutes%60;
+            hours = newMinutes/60 -1;
+        }
+        return hours+" hours & "+minutes + " minutes";
     }
 
     public void cancelAlarm(View v){
