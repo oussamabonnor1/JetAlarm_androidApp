@@ -27,6 +27,7 @@
         <activity android:name=".AlarmSettingActivity"></activity>
 
         <receiver android:name=".AlarmBroadcastReceiver"/>
+        <service android:name=".RingtoneService" android:enabled="true"/>
     </application>
 
 </manifest>
