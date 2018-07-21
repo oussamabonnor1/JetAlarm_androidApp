@@ -17,6 +17,7 @@ public class AlarmSettingActivity extends AppCompatActivity {
 
     TimePicker timePicker;
     AlarmManager alarmManager;
+    DataBaseManager dbManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,17 @@ public class AlarmSettingActivity extends AppCompatActivity {
 
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         timePicker = findViewById(R.id.timePicker);
+        dbManager = new DataBaseManager(getApplicationContext(),null);
 
+    }
+
+    public void cancelAlarm(View view){
+        onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -38,11 +49,10 @@ public class AlarmSettingActivity extends AppCompatActivity {
         intent.putExtra("time",time);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),pendingIntent);
-
-        Toast.makeText(getApplicationContext(), "Alarm will start in " + estimatedTime(calendar), Toast.LENGTH_SHORT).show();
+        dbManager.createAlarm(getApplicationContext(),calendar);
     }
 
-    String estimatedTime(Calendar calendar){
+    static String estimatedTime(Calendar calendar){
         long estimatedTimeLong = calendar.getTimeInMillis() - System.currentTimeMillis();
         estimatedTimeLong /= 60000;
         estimatedTimeLong++;
@@ -56,8 +66,4 @@ public class AlarmSettingActivity extends AppCompatActivity {
         return hours+" hours & "+minutes + " minutes";
     }
 
-    public void cancelAlarm(View v){
-        Intent i = new Intent(getApplicationContext(), AlarmCreationActivity.class);
-        startActivity(i);
-    }
 }

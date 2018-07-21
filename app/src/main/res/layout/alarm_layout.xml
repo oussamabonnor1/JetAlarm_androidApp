@@ -8,6 +8,7 @@
     android:padding="15dp"
     android:orientation="horizontal"
     android:weightSum="1">
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -51,6 +52,6 @@
             android:id="@+id/switchID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:checked="false" />
+            tools:checked="false"/>
     </LinearLayout>
 </LinearLayout>
