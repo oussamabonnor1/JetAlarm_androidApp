@@ -17,17 +17,23 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            </intent-filter></activity>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".AlarmSettingActivity"></activity>
+        <activity android:name=".AlarmSettingActivity" />
 
-        <receiver android:name=".AlarmBroadcastReceiver"/>
-        <service android:name=".RingtoneService" android:enabled="true"/>
+        <receiver android:name=".AlarmBroadcastReceiver" />
+
+        <service
+            android:name=".RingtoneService"
+            android:enabled="true" />
+
+        <activity android:name=".LearningActivity">
+        </activity>
+        <activity android:name=".WelcomeActivity"></activity>
     </application>
 
 </manifest>

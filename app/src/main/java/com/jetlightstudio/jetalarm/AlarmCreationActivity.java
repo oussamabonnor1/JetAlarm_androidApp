@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -21,7 +21,8 @@ import java.util.Random;
 
 public class AlarmCreationActivity extends AppCompatActivity {
 
-    GridView gridView;
+    ListView listView;
+    CustomStoryAdapter c;
     String[] hints = {
             "Sleep early to wake up early.",
             "Hope you're having a great time!",
@@ -44,7 +45,7 @@ public class AlarmCreationActivity extends AppCompatActivity {
 
         hintText = findViewById(R.id.hintText);
         hintText.setText(hints[new Random().nextInt(hints.length)]);
-        dbManager = new DataBaseManager(getApplicationContext(),null);
+        dbManager = new DataBaseManager(getApplicationContext(), null);
         alarms = dbManager.getAlarms();
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -56,10 +57,10 @@ public class AlarmCreationActivity extends AppCompatActivity {
             }
         });
 
-        gridView = findViewById(R.id.gridView);
-        CustomStoryAdapter c = new CustomStoryAdapter();
-        gridView.setAdapter(c);
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView = findViewById(R.id.listView);
+        c = new CustomStoryAdapter();
+        listView.setAdapter(c);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(AlarmCreationActivity.this, AlarmCreationActivity.class);
@@ -67,7 +68,15 @@ public class AlarmCreationActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        alarms.clear();
+        alarms = dbManager.getAlarms();
+        c.notifyDataSetChanged();
+        listView.setAdapter(c);
     }
 
     @Override
@@ -92,7 +101,7 @@ public class AlarmCreationActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void intentGo(View v){
+    public void intentGo(View v) {
         Intent i = new Intent(getApplicationContext(), AlarmSettingActivity.class);
         startActivity(i);
     }
@@ -127,10 +136,18 @@ public class AlarmCreationActivity extends AppCompatActivity {
             enabler.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                        dbManager.alarmActivation(alarms.get(temp).getId(), enabler.isChecked() ? 1 : 0);
+                    dbManager.alarmActivation(alarms.get(temp).getId(), enabler.isChecked() ? 1 : 0);
                 }
             });
-            time.setText(String.format("%02d:%02d", alarms.get(i).getHour(),alarms.get(i).getMinute()));
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(AlarmCreationActivity.this, AlarmSettingActivity.class);
+                    intent.putExtra("id", alarms.get(temp).getId());
+                    startActivity(intent);
+                }
+            });
+            time.setText(String.format("%02d:%02d", alarms.get(i).getHour(), alarms.get(i).getMinute()));
             week.setText("S S M T W T F");
             return view;
         }

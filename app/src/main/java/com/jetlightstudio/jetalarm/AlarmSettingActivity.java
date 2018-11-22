@@ -50,6 +50,7 @@ public class AlarmSettingActivity extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),pendingIntent);
         dbManager.createAlarm(getApplicationContext(),calendar);
+        cancelAlarm(v);
     }
 
     static String estimatedTime(Calendar calendar){
