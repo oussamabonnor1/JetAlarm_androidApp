@@ -19,7 +19,7 @@ public class RingtoneService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         System.out.println("hello, started!");
         MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(),R.raw.hello);
-        //mediaPlayer.start();
+        mediaPlayer.start();
         return START_NOT_STICKY;
     }
 }

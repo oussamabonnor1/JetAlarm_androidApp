@@ -31,8 +31,6 @@
             android:name=".RingtoneService"
             android:enabled="true" />
 
-        <activity android:name=".LearningActivity">
-        </activity>
         <activity android:name=".WelcomeActivity"></activity>
     </application>
 

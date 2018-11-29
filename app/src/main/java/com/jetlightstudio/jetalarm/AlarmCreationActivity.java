@@ -52,22 +52,15 @@ public class AlarmCreationActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Add alarm", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(AlarmCreationActivity.this, AlarmSettingActivity.class);
+                intent.putExtra("id", alarms.size() + 1);
+                startActivity(intent);
             }
         });
 
         listView = findViewById(R.id.listView);
         c = new CustomStoryAdapter();
         listView.setAdapter(c);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(AlarmCreationActivity.this, AlarmCreationActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
 
     @Override
@@ -142,9 +135,7 @@ public class AlarmCreationActivity extends AppCompatActivity {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(AlarmCreationActivity.this, AlarmSettingActivity.class);
-                    intent.putExtra("id", alarms.get(temp).getId());
-                    startActivity(intent);
+
                 }
             });
             time.setText(String.format("%02d:%02d", alarms.get(i).getHour(), alarms.get(i).getMinute()));
