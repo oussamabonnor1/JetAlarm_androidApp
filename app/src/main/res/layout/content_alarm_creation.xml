@@ -9,38 +9,31 @@
     android:weightSum="1"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".AlarmCreationActivity"
+    android:gravity="bottom"
     tools:showIn="@layout/activity_alarm_creation">
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".05"/>
-
-    <TextView
-        android:id="@+id/hintText"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".1"
-        android:text="Create or set an alarm"
-        android:gravity="center"
-        android:textColor="@color/colorAccent"
-        android:textSize="22dp"
-        android:textStyle="bold" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".05"
         android:background="@android:color/transparent"
-        android:onClick="intentGo"/>
+        android:onClick="intentGo" />
 
-    <ListView
-        android:id="@+id/listView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".8"
-        android:padding="10dp">
-    </ListView>
+        android:layout_weight=".9"
+        android:background="@drawable/test"
+        android:weightSum="1"
+        android:gravity="bottom"
+        android:orientation="vertical">
 
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".7"
+            android:padding="10dp" />
+    </LinearLayout>
 
 </LinearLayout>

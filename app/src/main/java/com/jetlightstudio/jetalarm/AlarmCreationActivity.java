@@ -43,8 +43,7 @@ public class AlarmCreationActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        hintText = findViewById(R.id.hintText);
-        hintText.setText(hints[new Random().nextInt(hints.length)]);
+
         dbManager = new DataBaseManager(getApplicationContext(), null);
         alarms = dbManager.getAlarms();
 
