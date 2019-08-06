@@ -3,21 +3,17 @@ package com.jetlightstudio.jetalarm;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class AlarmCreationActivity extends AppCompatActivity {
 
@@ -40,9 +36,6 @@ public class AlarmCreationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_creation);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
 
         dbManager = new DataBaseManager(getApplicationContext(), null);
         alarms = dbManager.getAlarms();
@@ -118,7 +111,7 @@ public class AlarmCreationActivity extends AppCompatActivity {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            view = getLayoutInflater().inflate(R.layout.alarm_layout, null);
+            view = getLayoutInflater().inflate(R.layout.alarm_view_item, null);
 
             TextView time = view.findViewById(R.id.timeText);
             TextView week = view.findViewById(R.id.weekText);
