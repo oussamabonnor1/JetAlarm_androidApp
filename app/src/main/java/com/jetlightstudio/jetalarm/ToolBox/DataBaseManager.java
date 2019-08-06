@@ -1,4 +1,4 @@
-package com.jetlightstudio.jetalarm;
+package com.jetlightstudio.jetalarm.ToolBox;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
+
+import com.jetlightstudio.jetalarm.Controllers.AlarmSettingActivity;
+import com.jetlightstudio.jetalarm.Model.Alarm;
 
 import java.util.ArrayList;
 import java.util.Calendar;

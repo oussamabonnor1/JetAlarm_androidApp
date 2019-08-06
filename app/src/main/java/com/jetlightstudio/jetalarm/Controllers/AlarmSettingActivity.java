@@ -1,4 +1,4 @@
-package com.jetlightstudio.jetalarm;
+package com.jetlightstudio.jetalarm.Controllers;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -9,7 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TimePicker;
-import android.widget.Toast;
+
+import com.jetlightstudio.jetalarm.ToolBox.AlarmBroadcastReceiver;
+import com.jetlightstudio.jetalarm.ToolBox.DataBaseManager;
+import com.jetlightstudio.jetalarm.R;
 
 import java.util.Calendar;
 
@@ -52,7 +55,7 @@ public class AlarmSettingActivity extends AppCompatActivity {
         cancelAlarm(v);
     }
 
-    static String estimatedTime(Calendar calendar) {
+    public static String estimatedTime(Calendar calendar) {
         long estimatedTimeLong = calendar.getTimeInMillis() - System.currentTimeMillis();
         estimatedTimeLong /= 60000;
         estimatedTimeLong++;

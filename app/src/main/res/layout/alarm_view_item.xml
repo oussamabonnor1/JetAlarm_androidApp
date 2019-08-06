@@ -1,58 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:id="@+id/backgroundLayout"
+    android:layout_width="150dp"
+    android:layout_height="200dp"
     android:background="@drawable/button_style"
+    android:elevation="7dp"
+    android:gravity="center"
+    android:orientation="vertical"
     android:padding="15dp"
-    android:elevation="3dp"
-    android:orientation="horizontal"
     android:weightSum="1">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight=".4"
-        android:weightSum="1"
-        >
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".2"
+        android:text="08:00"
+        android:textAlignment="center"
+        android:textColor="@color/colorTextDark"
+        android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/timeText"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".5"
-            android:textColor="@color/colorTextDark"
-            android:textSize="25dp"
-            android:text="08:00"
-            android:textAlignment="center"/>
+    <TextView
+        android:id="@+id/weekText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".15"
+        android:text="S S M T W T F"
+        android:textAlignment="center"
+        android:textColor="@color/colorTextLight" />
 
-        <TextView
-            android:id="@+id/weekText"
-            android:textColor="@color/colorTextDark"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".5"
-            android:text="S S M T W T F"
-            android:gravity="center|top"/>
-    </LinearLayout>
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight=".3"/>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_weight=".3">
-
-        <Switch
-            android:id="@+id/switchID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:checked="false"/>
-    </LinearLayout>
+    <Switch
+        android:id="@+id/switchID"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight=".2"
+        tools:checked="false" />
 </LinearLayout>

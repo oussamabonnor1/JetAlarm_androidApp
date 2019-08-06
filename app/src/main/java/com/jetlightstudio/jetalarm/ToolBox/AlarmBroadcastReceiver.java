@@ -1,4 +1,4 @@
-package com.jetlightstudio.jetalarm;
+package com.jetlightstudio.jetalarm.ToolBox;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

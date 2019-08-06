@@ -1,21 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AlarmCreationActivity">
+    android:background="@drawable/background_style"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:weightSum="1"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Controllers.AlarmCreationActivity"
+    tools:showIn="@layout/activity_alarm_creation">
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".05"
+        android:background="@android:color/transparent"
+        android:onClick="intentGo" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".8"
+        android:background="@drawable/svg_top_round"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-    <include layout="@layout/content_alarm_creation" />
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".7"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="5dp"
+            android:padding="10dp"
+            android:paddingTop="10dp" />
+    </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

@@ -1,10 +1,12 @@
-package com.jetlightstudio.jetalarm;
+package com.jetlightstudio.jetalarm.ToolBox;
 
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+
+import com.jetlightstudio.jetalarm.R;
 
 public class RingtoneService extends Service {
 
@@ -18,7 +20,7 @@ public class RingtoneService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         System.out.println("hello, started!");
-        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(),R.raw.hello);
+        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.hello);
         mediaPlayer.start();
         return START_NOT_STICKY;
     }

@@ -1,4 +1,4 @@
-package com.jetlightstudio.jetalarm;
+package com.jetlightstudio.jetalarm.Model;
 
 public class Alarm {
     private int hour, minute, id;

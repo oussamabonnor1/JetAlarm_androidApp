@@ -1,4 +1,4 @@
-package com.jetlightstudio.jetalarm;
+package com.jetlightstudio.jetalarm.Controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,10 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import com.jetlightstudio.jetalarm.ToolBox.DataBaseManager;
+import com.jetlightstudio.jetalarm.Model.Alarm;
+import com.jetlightstudio.jetalarm.R;
 
 import java.util.ArrayList;
 
@@ -39,16 +43,6 @@ public class AlarmCreationActivity extends AppCompatActivity {
 
         dbManager = new DataBaseManager(getApplicationContext(), null);
         alarms = dbManager.getAlarms();
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AlarmCreationActivity.this, AlarmSettingActivity.class);
-                intent.putExtra("id", alarms.size() + 1);
-                startActivity(intent);
-            }
-        });
 
         listView = findViewById(R.id.listView);
         c = new CustomStoryAdapter();
