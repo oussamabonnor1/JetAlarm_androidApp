@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/button_style"
     android:padding="15dp"
+    android:elevation="3dp"
     android:orientation="horizontal"
     android:weightSum="1">
 
@@ -22,14 +23,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".5"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorTextDark"
             android:textSize="25dp"
             android:text="08:00"
             android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/weekText"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorTextDark"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".5"

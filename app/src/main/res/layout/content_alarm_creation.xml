@@ -22,8 +22,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".9"
-        android:background="@drawable/test"
+        android:layout_weight=".8"
+        android:background="@drawable/svg_top_round"
         android:weightSum="1"
         android:gravity="bottom"
         android:orientation="vertical">
@@ -31,8 +31,11 @@
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
+            android:paddingTop="10dp"
             android:layout_height="0dp"
             android:layout_weight=".7"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="5dp"
             android:padding="10dp" />
     </LinearLayout>
 
