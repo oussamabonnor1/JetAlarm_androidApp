@@ -2,17 +2,14 @@ package com.jetlightstudio.jetalarm.Controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.TextView;
 
+import com.jetlightstudio.jetalarm.Adapters.CustomAlarmAdapter;
 import com.jetlightstudio.jetalarm.ToolBox.DataBaseManager;
 import com.jetlightstudio.jetalarm.Model.Alarm;
 import com.jetlightstudio.jetalarm.R;
@@ -21,8 +18,8 @@ import java.util.ArrayList;
 
 public class AlarmCreationActivity extends AppCompatActivity {
 
-    ListView listView;
-    CustomStoryAdapter c;
+    RecyclerView recycleView;
+    CustomAlarmAdapter c;
     String[] hints = {
             "Sleep early to wake up early.",
             "Hope you're having a great time!",
@@ -44,9 +41,9 @@ public class AlarmCreationActivity extends AppCompatActivity {
         dbManager = new DataBaseManager(getApplicationContext(), null);
         alarms = dbManager.getAlarms();
 
-        listView = findViewById(R.id.listView);
-        c = new CustomStoryAdapter();
-        listView.setAdapter(c);
+        recycleView = findViewById(R.id.recycleView);
+        c = new CustomAlarmAdapter(dbManager, alarms);
+        recycleView.setAdapter(c);
     }
 
     @Override
@@ -55,7 +52,7 @@ public class AlarmCreationActivity extends AppCompatActivity {
         alarms.clear();
         alarms = dbManager.getAlarms();
         c.notifyDataSetChanged();
-        listView.setAdapter(c);
+        recycleView.setAdapter(c);
     }
 
     @Override
@@ -85,49 +82,4 @@ public class AlarmCreationActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    class CustomStoryAdapter extends BaseAdapter {
-
-        @Override
-        public int getCount() {
-            return alarms.size();
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return i;
-        }
-
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            view = getLayoutInflater().inflate(R.layout.alarm_view_item, null);
-
-            TextView time = view.findViewById(R.id.timeText);
-            TextView week = view.findViewById(R.id.weekText);
-            final Switch enabler = view.findViewById(R.id.switchID);
-            enabler.setChecked(alarms.get(i).isActive());
-            final int temp = i;
-            enabler.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dbManager.alarmActivation(alarms.get(temp).getId(), enabler.isChecked() ? 1 : 0);
-                }
-            });
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            time.setText(String.format("%02d:%02d", alarms.get(i).getHour(), alarms.get(i).getMinute()));
-            week.setText("S S M T W T F");
-            return view;
-        }
-
-    }
 }
