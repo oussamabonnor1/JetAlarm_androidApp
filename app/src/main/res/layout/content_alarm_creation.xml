@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".9"
-        android:background="@drawable/test"
+        android:background="@drawable/svg_round_edge"
         android:weightSum="1"
         android:gravity="bottom"
         android:orientation="vertical">
