@@ -23,14 +23,13 @@ public class AlarmSettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_setting);
-
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         timePicker = findViewById(R.id.timePicker);
-        dbManager = new DataBaseManager(getApplicationContext(),null);
-
+        timePicker.setIs24HourView(true);
+        dbManager = new DataBaseManager(getApplicationContext(), null);
     }
 
-    public void cancelAlarm(View view){
+    public void cancelAlarm(View view) {
         onBackPressed();
     }
 
@@ -40,31 +39,31 @@ public class AlarmSettingActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    public void setAlarm(View v){
+    public void setAlarm(View v) {
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, timePicker.getHour());
         calendar.set(Calendar.MINUTE, timePicker.getMinute());
-        String time= String.format("%02d:%02d",calendar.get(Calendar.HOUR_OF_DAY) ,calendar.get(Calendar.MINUTE));
+        String time = String.format("%02d:%02d", calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
         Intent intent = new Intent(getApplicationContext(), AlarmBroadcastReceiver.class);
-        intent.putExtra("time",time);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),pendingIntent);
-        dbManager.createAlarm(getApplicationContext(),calendar);
+        intent.putExtra("time", time);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        dbManager.createAlarm(getApplicationContext(), calendar);
         cancelAlarm(v);
     }
 
-    static String estimatedTime(Calendar calendar){
+    static String estimatedTime(Calendar calendar) {
         long estimatedTimeLong = calendar.getTimeInMillis() - System.currentTimeMillis();
         estimatedTimeLong /= 60000;
         estimatedTimeLong++;
-        int hours = Integer.valueOf(String.format("%02d", estimatedTimeLong/60));
-        int minutes = Integer.valueOf(String.format("%02d", estimatedTimeLong%60));
-        if(minutes < 0){
+        int hours = Integer.valueOf(String.format("%02d", estimatedTimeLong / 60));
+        int minutes = Integer.valueOf(String.format("%02d", estimatedTimeLong % 60));
+        if (minutes < 0) {
             int newMinutes = (24 * 60) + minutes + 3;
-            minutes = newMinutes%60;
-            hours = newMinutes/60 -1;
+            minutes = newMinutes % 60;
+            hours = newMinutes / 60 - 1;
         }
-        return hours+" hours & "+minutes + " minutes";
+        return hours + " hours & " + minutes + " minutes";
     }
 
 }
