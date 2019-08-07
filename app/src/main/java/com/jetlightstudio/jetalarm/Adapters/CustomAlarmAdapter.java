@@ -1,10 +1,14 @@
 package com.jetlightstudio.jetalarm.Adapters;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.support.v7.widget.RecyclerView;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -19,6 +23,7 @@ import java.util.ArrayList;
 public class CustomAlarmAdapter extends RecyclerView.Adapter<CustomAlarmAdapter.ViewHolder> {
     DataBaseManager dbManager;
     ArrayList<Alarm> alarms;
+    int i = 0;
 
     public CustomAlarmAdapter(DataBaseManager dbManager, ArrayList<Alarm> alarms) {
         this.dbManager = dbManager;
@@ -46,21 +51,32 @@ public class CustomAlarmAdapter extends RecyclerView.Adapter<CustomAlarmAdapter.
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         LayoutInflater inflater = (LayoutInflater) App.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.alarm_view_item, null);
+        View view = inflater.inflate(i > 0 ? R.layout.alarm_view_item : R.layout.adding_alarm_item, null);
+        WindowManager wm = (WindowManager) App.getContext().getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x - (size.x / 8);
+        view.setLayoutParams(new GridView.LayoutParams(width / 3, width / 2));
+        i++;
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.enabler.setChecked(alarms.get(position).isActive());
-        holder.enabler.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //dbManager.alarmActivation(alarms.get(temp).getId(), enabler.isChecked() ? 1 : 0);
-            }
-        });
-        holder.timerText.setText(String.format("%02d:%02d", alarms.get(position).getHour(), alarms.get(position).getMinute()));
+        if (position > 0) {
+            holder.enabler.setChecked(alarms.get(position).isActive());
+            holder.enabler.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //dbManager.alarmActivation(alarms.get(temp).getId(), enabler.isChecked() ? 1 : 0);
+                }
+            });
+            holder.timerText.setText(String.format("%02d:%02d", alarms.get(position).getHour(), alarms.get(position).getMinute()));
+
+        }
     }
 
     @Override
