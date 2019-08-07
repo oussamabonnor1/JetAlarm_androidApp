@@ -28,15 +28,18 @@
         android:orientation="vertical"
         android:weightSum="1">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycleView"
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".7"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="5dp"
-            android:padding="10dp"
-            android:paddingTop="10dp" />
+            android:layout_weight=".7">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycleView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:paddingTop="10dp" />
+        </HorizontalScrollView>
     </LinearLayout>
 
 </LinearLayout>

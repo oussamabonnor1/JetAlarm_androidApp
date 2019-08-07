@@ -1,18 +1,20 @@
 package com.jetlightstudio.jetalarm.Controllers;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.jetlightstudio.jetalarm.Adapters.CustomAlarmAdapter;
-import com.jetlightstudio.jetalarm.ToolBox.DataBaseManager;
 import com.jetlightstudio.jetalarm.Model.Alarm;
 import com.jetlightstudio.jetalarm.R;
+import com.jetlightstudio.jetalarm.ToolBox.DataBaseManager;
 
 import java.util.ArrayList;
 
@@ -44,6 +46,15 @@ public class AlarmCreationActivity extends AppCompatActivity {
         recycleView = findViewById(R.id.recycleView);
         c = new CustomAlarmAdapter(dbManager, alarms);
         recycleView.setAdapter(c);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        recycleView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                super.getItemOffsets(outRect, view, parent, state);
+                outRect.set(10,5,10,5);
+            }
+        });
+        recycleView.setLayoutManager(layoutManager);
     }
 
     @Override

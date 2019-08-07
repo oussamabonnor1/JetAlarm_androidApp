@@ -2,20 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/backgroundLayout"
-    android:layout_width="150dp"
-    android:layout_height="200dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@drawable/button_style"
     android:elevation="7dp"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="15dp"
+    android:padding="20dp"
     android:weightSum="1">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/alarm_add"/>
 
     <TextView
         android:id="@+id/timeText"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight=".2"
+        android:layout_weight=".4"
         android:text="08:00"
         android:textAlignment="center"
         android:textColor="@color/colorTextDark"
@@ -23,9 +28,9 @@
 
     <TextView
         android:id="@+id/weekText"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight=".15"
+        android:layout_weight=".3"
         android:text="S S M T W T F"
         android:textAlignment="center"
         android:textColor="@color/colorTextLight" />
@@ -34,6 +39,6 @@
         android:id="@+id/switchID"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight=".2"
+        android:layout_weight=".3"
         tools:checked="false" />
 </LinearLayout>
