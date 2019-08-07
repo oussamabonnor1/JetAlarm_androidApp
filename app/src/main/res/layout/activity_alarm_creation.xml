@@ -11,12 +11,30 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Controllers.AlarmCreationActivity">
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".05"
-        android:background="@android:color/transparent"
-        android:onClick="intentGo" />
+        android:layout_weight=".2"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="Hell, Oussama"
+            android:textColor="@color/colorAccent"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/hintText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="Hint text here"
+
+            android:textColor="@color/colorAccent" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

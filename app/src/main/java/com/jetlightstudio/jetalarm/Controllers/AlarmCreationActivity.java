@@ -17,6 +17,7 @@ import com.jetlightstudio.jetalarm.R;
 import com.jetlightstudio.jetalarm.ToolBox.DataBaseManager;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class AlarmCreationActivity extends AppCompatActivity {
 
@@ -43,6 +44,9 @@ public class AlarmCreationActivity extends AppCompatActivity {
         dbManager = new DataBaseManager(getApplicationContext(), null);
         alarms = dbManager.getAlarms();
 
+        hintText = findViewById(R.id.hintText);
+        hintText.setText(hints[new Random().nextInt(hints.length)]);
+
         recycleView = findViewById(R.id.recycleView);
         c = new CustomAlarmAdapter(dbManager, alarms);
         recycleView.setAdapter(c);
@@ -51,7 +55,7 @@ public class AlarmCreationActivity extends AppCompatActivity {
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
                 super.getItemOffsets(outRect, view, parent, state);
-                outRect.set(10,5,10,5);
+                outRect.set(10, 5, 10, 5);
             }
         });
         recycleView.setLayoutManager(layoutManager);
