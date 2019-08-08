@@ -42,7 +42,8 @@ public class AlarmCreationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alarm_creation);
 
         dbManager = new DataBaseManager(getApplicationContext(), null);
-        alarms = dbManager.getAlarms();
+        alarms.add(0, new Alarm());
+        alarms.addAll(dbManager.getAlarms());
 
         hintText = findViewById(R.id.hintText);
         hintText.setText(hints[new Random().nextInt(hints.length)]);
