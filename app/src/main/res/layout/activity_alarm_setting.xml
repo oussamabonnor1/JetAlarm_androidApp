@@ -3,50 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_style"
+    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".Controllers.AlarmSettingActivity"
-    android:weightSum="1">
+    tools:context=".Controllers.AlarmSettingActivity">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".05"/>
 
     <TimePicker
         android:id="@+id/timePicker"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight=".75"
-        android:headerBackground="@drawable/button_style"
-        android:numbersBackgroundColor="@android:color/transparent"
-        android:numbersSelectorColor="#FF00FF"
-        android:numbersTextColor="@color/colorAccent"
+        android:layout_height="wrap_content"
         android:padding="15dp"
-        android:timePickerMode="clock">
+        android:theme="@style/alarmPickerStyle"
 
-    </TimePicker>
+        android:timePickerMode="spinner" />
+
     <Button
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".1"
-        android:layout_margin="10dp"
-        android:background="@drawable/button_style"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:background="@drawable/button_colorful_style"
+        android:elevation="5dp"
+        android:onClick="setAlarm"
         android:text="Set alarm"
         android:textColor="@color/colorAccent"
-        android:textSize="22dp"
-        android:onClick="setAlarm"
-        />
+        android:textSize="18sp" />
+
     <Button
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".1"
-        android:layout_margin="10dp"
-        android:background="@drawable/button_style"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:background="@drawable/button_colorful_style"
+        android:elevation="5dp"
+        android:onClick="cancelAlarm"
         android:text="Cancel"
         android:textColor="@color/colorAccent"
-        android:textSize="22dp"
-        android:onClick="cancelAlarm"
-        />
+        android:textSize="18sp" />
 
 </LinearLayout>
