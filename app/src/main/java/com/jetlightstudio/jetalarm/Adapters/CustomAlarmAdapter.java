@@ -69,7 +69,7 @@ public class CustomAlarmAdapter extends RecyclerView.Adapter<CustomAlarmAdapter.
         Point size = new Point();
         display.getSize(size);
         int width = size.x - (size.x / 8);
-        view.setLayoutParams(new LinearLayout.LayoutParams(width / 3, width / 2));
+        view.setLayoutParams(new LinearLayout.LayoutParams(width / 3, (int) (width / 1.8)));
         itemPosition++;
         return new ViewHolder(view, itemPosition - 1);
     }
