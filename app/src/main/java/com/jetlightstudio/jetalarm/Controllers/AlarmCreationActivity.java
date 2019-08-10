@@ -65,10 +65,10 @@ public class AlarmCreationActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        alarms.clear();
+        /*alarms.clear();
         alarms = dbManager.getAlarms();
         c.notifyDataSetChanged();
-        recycleView.setAdapter(c);
+        recycleView.setAdapter(c);*/
     }
 
     @Override

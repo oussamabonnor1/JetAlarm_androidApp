@@ -25,7 +25,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".Controllers.AlarmSettingActivity" />
+        <activity android:name=".Controllers.AlarmSettingActivity" android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver android:name=".ToolBox.AlarmBroadcastReceiver" />
 

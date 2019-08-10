@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="#F4F4F4"
     android:orientation="vertical"
     tools:context=".Controllers.AlarmSettingActivity">
 
@@ -12,9 +13,7 @@
         android:id="@+id/timePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="15dp"
         android:theme="@style/alarmPickerStyle"
-
         android:timePickerMode="spinner" />
 
     <Button
