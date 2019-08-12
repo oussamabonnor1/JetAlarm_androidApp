@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
-            android:text="Hell, Oussama"
+            android:text="Hello, Oussama"
             android:textColor="@color/colorAccent"
             android:textSize="28sp" />
 
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".8"
-        android:background="@drawable/svg_top_round"
+        android:background="@drawable/svg_round_edge"
         android:gravity="bottom"
         android:orientation="vertical"
         android:weightSum="1">
