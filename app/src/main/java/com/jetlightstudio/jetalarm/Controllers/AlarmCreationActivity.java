@@ -44,7 +44,7 @@ public class AlarmCreationActivity extends AppCompatActivity {
         dbManager = new DataBaseManager(getApplicationContext(), null);
         alarms.add(0, new Alarm());
         alarms.addAll(dbManager.getAlarms());
-
+        System.out.println(alarms.size());
         hintText = findViewById(R.id.hintText);
         hintText.setText(hints[new Random().nextInt(hints.length)]);
 
