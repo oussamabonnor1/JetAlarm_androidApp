@@ -47,6 +47,7 @@ public class CustomAlarmAdapter extends RecyclerView.Adapter<CustomAlarmAdapter.
                     @Override
                     public void onClick(View view) {
                         Intent alarmSettingIntent = new Intent(App.getContext(), AlarmSettingActivity.class);
+                        alarmSettingIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         App.getContext().startActivity(alarmSettingIntent);
                     }
                 });
