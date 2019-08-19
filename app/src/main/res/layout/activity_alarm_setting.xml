@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F4F4"
+    android:background="@drawable/background_style"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".Controllers.AlarmSettingActivity">
@@ -11,58 +11,66 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
         android:orientation="horizontal"
-        android:weightSum="1">
+        android:layout_marginTop="30dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/svg_alarm_icon" />
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight=".4"
-            android:text="Alarm name:"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/alarmNameEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".6"
-            android:hint="None" />
+            android:layout_marginStart="10dp"
+            android:text="New Alarm"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/colorAccent"
+            android:textSize="28sp" />
     </LinearLayout>
 
-    <TimePicker
-        android:id="@+id/timePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:theme="@style/alarmPickerStyle"
-        android:timePickerMode="spinner" />
-
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginStart="50dp"
-        android:background="@drawable/button_colorful_style"
-        android:elevation="5dp"
-        android:onClick="setAlarm"
-        android:text="Set alarm"
-        android:textColor="@color/colorAccent"
-        android:textSize="18sp" />
+        android:layout_height="match_parent"
+        android:background="@drawable/svg_inverted_cloud"
+        android:gravity="bottom|center"
+        android:orientation="vertical">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_marginStart="50dp"
-        android:background="@drawable/button_colorful_style"
-        android:elevation="5dp"
-        android:onClick="cancelAlarm"
-        android:text="Cancel"
-        android:textColor="@color/colorAccent"
-        android:textSize="18sp" />
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/alarmPickerStyle"
+            android:timePickerMode="spinner" />
 
-</LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/button_colorful_style"
+            android:elevation="5dp"
+            android:onClick="setAlarm"
+            android:text="Set alarm"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginStart="50dp"
+            android:background="@drawable/button_colorful_style"
+            android:elevation="5dp"
+            android:onClick="cancelAlarm"
+            android:text="Cancel"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</RelativeLayout>

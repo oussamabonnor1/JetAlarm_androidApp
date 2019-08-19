@@ -20,6 +20,7 @@
     <style name="alarmPickerStyle">
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
     </style>
 
 </resources>
